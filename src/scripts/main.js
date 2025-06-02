@@ -360,34 +360,36 @@ console.log(people); // you can remove it
 // write your code here
 const dashboard = document.querySelector('.dashboard');
 
-people.forEach((person) => {
-  const newRow = document.createElement('tr');
+if (dashboard && dashboard.tagName === 'TABLE') {
+  people.forEach((person) => {
+    const newRow = document.createElement('tr');
 
-  let personGender = person.sex;
+    let personGender = person.sex;
 
-  if (personGender === 'm') {
-    personGender = 'Male';
-  }
+    if (personGender === 'm') {
+      personGender = 'Male';
+    }
 
-  if (personGender === 'f') {
-    personGender = 'Female';
-  }
+    if (personGender === 'f') {
+      personGender = 'Female';
+    }
 
-  const dataForRow = {
-    name: person.name,
-    gender: personGender,
-    born: person.born,
-    died: person.died,
-    age: person.died - person.born,
-    century: Math.ceil(person.died / 100),
-  };
+    const dataForRow = {
+      name: person.name,
+      gender: personGender,
+      born: person.born,
+      died: person.died,
+      age: person.died - person.born,
+      century: Math.ceil(person.died / 100),
+    };
 
-  for (const key in dataForRow) {
-    const newCell = document.createElement('td');
+    for (const key in dataForRow) {
+      const newCell = document.createElement('td');
 
-    newCell.textContent = dataForRow[key];
-    newRow.append(newCell);
-  }
+      newCell.textContent = dataForRow[key];
+      newRow.append(newCell);
+    }
 
-  dashboard.append(newRow);
-});
+    dashboard.append(newRow);
+  });
+}
